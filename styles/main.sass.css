@@ -1,0 +1,9 @@
+body {
+  margin: 0; }
+
+.form {
+  text-align: center;
+  padding: 1em; }
+  .form input, .form select {
+    padding: 1em;
+    display: inline; }
