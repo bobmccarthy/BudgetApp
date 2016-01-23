@@ -19098,7 +19098,8 @@ module.exports = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			entries: []
+			entries: [],
+			newer: 0
 		};
 	},
 	componentWillMount: function componentWillMount() {
@@ -19109,13 +19110,37 @@ module.exports = React.createClass({
 		});
 	},
 	render: function render() {
+		var total = 0;
 		console.log(this.state.entries);
+		var table = this.state.entries.map(function (entry) {
+			total = total + entry.get('Amount');
+			return React.createElement(
+				'div',
+				{ className: 'eachEntry', key: entry.id },
+				React.createElement(
+					'div',
+					{ className: 'tRow' },
+					entry.get('Date')
+				),
+				React.createElement(
+					'div',
+					{ className: 'tRow' },
+					'$',
+					entry.get('Amount')
+				),
+				React.createElement(
+					'div',
+					{ className: 'tRow' },
+					entry.get('Type')
+				)
+			);
+		});
 		return React.createElement(
 			'div',
 			null,
 			React.createElement(
 				'form',
-				{ onSubmit: this.entry, className: 'form' },
+				{ onSubmit: this.entry, className: 'form box-shadow--2dp' },
 				React.createElement(
 					'h2',
 					null,
@@ -19162,11 +19187,32 @@ module.exports = React.createClass({
 					null,
 					'Enter'
 				)
+			),
+			React.createElement(
+				'h2',
+				{ className: 'outsideText' },
+				'Our Budget Table'
+			),
+			React.createElement(
+				'div',
+				{ className: 'allTable box-shadow--2dp' },
+				table
+			),
+			React.createElement(
+				'div',
+				{ className: 'totalAmt' },
+				React.createElement(
+					'h2',
+					null,
+					'Total: $',
+					total
+				)
 			)
 		);
 	},
 	entry: function entry(e) {
-		e.preventDefault();
+		// e.preventDefault();
+
 		console.log(this.refs.kind.value);
 		console.log(this.refs.date.value);
 		console.log(parseInt(this.refs.amount.value));
@@ -19175,9 +19221,8 @@ module.exports = React.createClass({
 		financesAdd.set('Type', this.refs.kind.value);
 		financesAdd.set('Amount', parseInt(this.refs.amount.value));
 		financesAdd.save({
-			success: function success() {
-				console.log('saved');
-			}
+
+			success: function success() {}
 		});
 	}
 });
