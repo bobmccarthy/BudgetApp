@@ -29054,31 +29054,31 @@ module.exports = React.createClass({
 					'div',
 					{ className: 'totalAmt box-shadow--4dp' },
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Total: $',
 						total
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Gas Total: $',
 						gasTotal
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Groceries Total: $',
 						groceryTotal
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Going Out Total: $',
 						goingOutTotal
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Other Total: $',
 						otherTotal
@@ -29088,31 +29088,31 @@ module.exports = React.createClass({
 					'div',
 					{ className: 'totalLeft box-shadow--4dp' },
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Total Left: $',
 						700 - total
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Gas Total Left: $',
 						200 - gasTotal
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Groceries Total Left: $',
 						200 - groceryTotal
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Going Out Total Left: $',
 						200 - goingOutTotal
 					),
 					React.createElement(
-						'h2',
+						'h3',
 						null,
 						'Other Total Left: $',
 						100 - otherTotal

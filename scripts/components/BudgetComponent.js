@@ -71,18 +71,18 @@ module.exports = React.createClass({
 				</form>
 				<div className="floats">
 					<div className="totalAmt box-shadow--4dp">
-						<h2>Total: ${total}</h2>
-						<h2>Gas Total: ${gasTotal}</h2>
-						<h2>Groceries Total: ${groceryTotal}</h2>
-						<h2>Going Out Total: ${goingOutTotal}</h2>
-						<h2>Other Total: ${otherTotal}</h2>
+						<h3>Total: ${total}</h3>
+						<h3>Gas Total: ${gasTotal}</h3>
+						<h3>Groceries Total: ${groceryTotal}</h3>
+						<h3>Going Out Total: ${goingOutTotal}</h3>
+						<h3>Other Total: ${otherTotal}</h3>
 					</div>
 					<div className="totalLeft box-shadow--4dp">
-						<h2>Total Left: ${700-total}</h2>
-						<h2>Gas Total Left: ${200-gasTotal}</h2>
-						<h2>Groceries Total Left: ${200-groceryTotal}</h2>
-						<h2>Going Out Total Left: ${200-goingOutTotal}</h2>
-						<h2>Other Total Left: ${100-otherTotal}</h2>
+						<h3>Total Left: ${700-total}</h3>
+						<h3>Gas Total Left: ${200-gasTotal}</h3>
+						<h3>Groceries Total Left: ${200-groceryTotal}</h3>
+						<h3>Going Out Total Left: ${200-goingOutTotal}</h3>
+						<h3>Other Total Left: ${100-otherTotal}</h3>
 					</div>
 				</div>
 				<div className="outsideText">Expenditures</div>
