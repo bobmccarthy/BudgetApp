@@ -1,13 +1,16 @@
 body{
 	margin: 0;
+	background-color: #CEE6B0;
 }
 .form{
+	background-color: white;
 	margin: 1em 10%;
 	text-align: center;
 	padding: 1em;
 	input, select{
 		padding: 1em;
 		// display: inline;
+		width: 50%;
 		box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 
 	}
@@ -23,16 +26,18 @@ body{
 		display: block;
 		margin: 1em auto;
 		 
-		font-size: 1.5em;
+		font-size: 2em;
 		box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 
 	}
 }
 .outsideText{
+	font-size: 2em;
 	// text-align: center;
-	margin: 0 0 0 10%;
+	margin: 2em 0 0 10%;
 }
 .allTable{
+	background-color: white;
 	:first-child{
 		margin-top: 0.25em;
 	}
@@ -47,9 +52,32 @@ body{
 	display: inline;
 	margin: 0.5em;
 }
+.floats{
+	background-image: url('../images/money.jpg');
+	overflow: hidden;
+	background-size: cover;
+	padding: 10%;
+}
 .totalAmt{
 	text-align: center;
-
+	width: 48%;
+	float: left;
+	margin-right: 2%;
+	// margin: 1em 0;
+	box-sizing: border-box;
+	color: white;
+	background-color: rgba(0, 0, 0, .8);
+	
+}
+.totalLeft{
+	text-align: center;
+	width: 50%;
+	float: left;
+	box-sizing: border-box;
+	// margin: 1em 0;
+	
+	color: white;
+	background-color: rgba(0, 0, 0, .8);
 }
 
 

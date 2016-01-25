@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-
+var $ = require('jquery');
 var FinancesModel = require('../models/FinancesModel');
 var financesQuery = new Parse.Query(FinancesModel);
 
@@ -20,6 +20,7 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		var total = 0;
+		
 		var otherTotal=0;
 		var gasTotal=0;
 		var groceryTotal=0;
@@ -55,7 +56,7 @@ module.exports = React.createClass({
 			<div>
 				<form onSubmit={this.entry} className="form box-shadow--2dp">
 					<h2>Date</h2>
-					<input ref="date" type="date"/>
+					<input className="date" ref="date" type="date"/>
 					<h2>For What?</h2>
 					<select onChange={this.descript} ref="kind">
 						<option>Gas</option>
@@ -65,17 +66,26 @@ module.exports = React.createClass({
 					</select>
 					<input id="desc" ref="descr" placeholder="description"/>
 					<h2>Amount</h2>
-					<input ref="amount" type="number"/>
+					<input className="amountC" ref="amount" type="number"/>
 					<button>Enter</button>
 				</form>
-				<div className="totalAmt">
-					<h3>Total: ${total}</h3>
-					<h3>Gas Total: ${gasTotal}</h3>
-					<h3>Groceries Total: ${groceryTotal}</h3>
-					<h3>Going Out Total: ${goingOutTotal}</h3>
-					<h3>Other Total: ${otherTotal}</h3>
+				<div className="floats">
+					<div className="totalAmt box-shadow--4dp">
+						<h2>Total: ${total}</h2>
+						<h2>Gas Total: ${gasTotal}</h2>
+						<h2>Groceries Total: ${groceryTotal}</h2>
+						<h2>Going Out Total: ${goingOutTotal}</h2>
+						<h2>Other Total: ${otherTotal}</h2>
+					</div>
+					<div className="totalLeft box-shadow--4dp">
+						<h2>Total Left: ${700-total}</h2>
+						<h2>Gas Total Left: ${200-gasTotal}</h2>
+						<h2>Groceries Total Left: ${300-groceryTotal}</h2>
+						<h2>Going Out Total Left: ${200-goingOutTotal}</h2>
+						<h2>Other Total Left: ${0-otherTotal}</h2>
+					</div>
 				</div>
-				<h2 className="outsideText">Our Budget Table</h2>
+				<div className="outsideText">Expenditures</div>
 				<div className="allTable box-shadow--2dp">
 					{table}
 				</div>
@@ -84,8 +94,7 @@ module.exports = React.createClass({
 		)
 	},
 	entry: function(e){
-		// e.preventDefault();
-		
+		e.preventDefault();
 		console.log(this.refs.kind.value);
 		console.log(this.refs.date.value);
 		console.log(parseInt(this.refs.amount.value));
@@ -99,7 +108,12 @@ module.exports = React.createClass({
 		financesAdd.save({
 			
 			success: ()=>{
-
+				$('.date').val('');
+				$('.amountC').val('');
+				financesQuery.find().then((list)=> {
+					this.setState({entries: list})
+				}
+				);
 			}
 		});
 
