@@ -19090,6 +19090,7 @@ module.exports = require('./lib/React');
 'use strict';
 
 var React = require('react');
+
 var FinancesModel = require('../models/FinancesModel');
 var financesQuery = new Parse.Query(FinancesModel);
 
@@ -19111,16 +19112,43 @@ module.exports = React.createClass({
 	},
 	render: function render() {
 		var total = 0;
+		var otherTotal = 0;
+		var gasTotal = 0;
+		var groceryTotal = 0;
+		var goingOutTotal = 0;
 		console.log(this.state.entries);
 		var table = this.state.entries.map(function (entry) {
 			total = total + entry.get('Amount');
+			if (entry.get('Description')) {
+				otherTotal = otherTotal + entry.get('Amount');
+				var des = React.createElement(
+					'div',
+					{ className: 'tRow' },
+					entry.get('Description')
+				);
+			} else {
+				var des = React.createElement(
+					'div',
+					{ className: 'tRow' },
+					entry.get('Type')
+				);
+			}
+			if (entry.get('Type') == 'Gas') {
+				gasTotal = gasTotal + entry.get('Amount');
+			}
+			if (entry.get('Type') == 'Groceries') {
+				groceryTotal = groceryTotal + entry.get('Amount');
+			}
+			if (entry.get('Type') == 'Going Out') {
+				goingOutTotal = goingOutTotal + entry.get('Amount');
+			}
 			return React.createElement(
 				'div',
 				{ className: 'eachEntry', key: entry.id },
 				React.createElement(
 					'div',
 					{ className: 'tRow' },
-					entry.get('Date')
+					entry.get('Date').substring(5, 12)
 				),
 				React.createElement(
 					'div',
@@ -19128,11 +19156,7 @@ module.exports = React.createClass({
 					'$',
 					entry.get('Amount')
 				),
-				React.createElement(
-					'div',
-					{ className: 'tRow' },
-					entry.get('Type')
-				)
+				des
 			);
 		});
 		return React.createElement(
@@ -19154,7 +19178,7 @@ module.exports = React.createClass({
 				),
 				React.createElement(
 					'select',
-					{ ref: 'kind' },
+					{ onChange: this.descript, ref: 'kind' },
 					React.createElement(
 						'option',
 						null,
@@ -19176,6 +19200,7 @@ module.exports = React.createClass({
 						'Other'
 					)
 				),
+				React.createElement('input', { id: 'desc', ref: 'descr', placeholder: 'description' }),
 				React.createElement(
 					'h2',
 					null,
@@ -19189,6 +19214,40 @@ module.exports = React.createClass({
 				)
 			),
 			React.createElement(
+				'div',
+				{ className: 'totalAmt' },
+				React.createElement(
+					'h3',
+					null,
+					'Total: $',
+					total
+				),
+				React.createElement(
+					'h3',
+					null,
+					'Gas Total: $',
+					gasTotal
+				),
+				React.createElement(
+					'h3',
+					null,
+					'Groceries Total: $',
+					groceryTotal
+				),
+				React.createElement(
+					'h3',
+					null,
+					'Going Out Total: $',
+					goingOutTotal
+				),
+				React.createElement(
+					'h3',
+					null,
+					'Other Total: $',
+					otherTotal
+				)
+			),
+			React.createElement(
 				'h2',
 				{ className: 'outsideText' },
 				'Our Budget Table'
@@ -19197,16 +19256,6 @@ module.exports = React.createClass({
 				'div',
 				{ className: 'allTable box-shadow--2dp' },
 				table
-			),
-			React.createElement(
-				'div',
-				{ className: 'totalAmt' },
-				React.createElement(
-					'h2',
-					null,
-					'Total: $',
-					total
-				)
 			)
 		);
 	},
@@ -19217,6 +19266,9 @@ module.exports = React.createClass({
 		console.log(this.refs.date.value);
 		console.log(parseInt(this.refs.amount.value));
 		var financesAdd = new FinancesModel();
+		if (this.refs.descr.value) {
+			financesAdd.set('Description', this.refs.descr.value);
+		}
 		financesAdd.set('Date', this.refs.date.value);
 		financesAdd.set('Type', this.refs.kind.value);
 		financesAdd.set('Amount', parseInt(this.refs.amount.value));
@@ -19224,6 +19276,12 @@ module.exports = React.createClass({
 
 			success: function success() {}
 		});
+	},
+	descript: function descript() {
+
+		if (this.refs.kind.value == 'Other') {
+			document.getElementById('desc').style.display = 'block';
+		}
 	}
 });
 //comments here

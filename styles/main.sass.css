@@ -7,10 +7,13 @@ body {
   padding: 1em; }
   .form input, .form select {
     padding: 1em;
-    display: inline;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
   .form select {
     font-size: 1.5em; }
+  .form #desc {
+    display: block;
+    margin: 1em auto;
+    display: none; }
   .form button {
     display: block;
     margin: 1em auto;
@@ -18,10 +21,12 @@ body {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
 
 .outsideText {
-  text-align: center; }
+  margin: 0 0 0 10%; }
 
 .allTable {
   margin: 0 10%; }
+  .allTable :first-child {
+    margin-top: 0.25em; }
 
 .eachEntry {
   font-size: 2em;

@@ -7,12 +7,17 @@ body{
 	padding: 1em;
 	input, select{
 		padding: 1em;
-		display: inline;
+		// display: inline;
 		box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 
 	}
 	select{
 		font-size: 1.5em;
+	}
+	#desc{
+		display: block;
+		margin: 1em auto;
+		display: none;
 	}
 	button{
 		display: block;
@@ -24,9 +29,13 @@ body{
 	}
 }
 .outsideText{
-	text-align: center;
+	// text-align: center;
+	margin: 0 0 0 10%;
 }
 .allTable{
+	:first-child{
+		margin-top: 0.25em;
+	}
 	margin: 0 10%;
 }
 .eachEntry{
@@ -40,6 +49,7 @@ body{
 }
 .totalAmt{
 	text-align: center;
+
 }
 
 
