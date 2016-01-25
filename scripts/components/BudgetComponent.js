@@ -80,9 +80,9 @@ module.exports = React.createClass({
 					<div className="totalLeft box-shadow--4dp">
 						<h2>Total Left: ${700-total}</h2>
 						<h2>Gas Total Left: ${200-gasTotal}</h2>
-						<h2>Groceries Total Left: ${300-groceryTotal}</h2>
+						<h2>Groceries Total Left: ${200-groceryTotal}</h2>
 						<h2>Going Out Total Left: ${200-goingOutTotal}</h2>
-						<h2>Other Total Left: ${0-otherTotal}</h2>
+						<h2>Other Total Left: ${100-otherTotal}</h2>
 					</div>
 				</div>
 				<div className="outsideText">Expenditures</div>

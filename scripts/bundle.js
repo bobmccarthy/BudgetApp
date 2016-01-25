@@ -29103,7 +29103,7 @@ module.exports = React.createClass({
 						'h2',
 						null,
 						'Groceries Total Left: $',
-						300 - groceryTotal
+						200 - groceryTotal
 					),
 					React.createElement(
 						'h2',
@@ -29115,7 +29115,7 @@ module.exports = React.createClass({
 						'h2',
 						null,
 						'Other Total Left: $',
-						0 - otherTotal
+						100 - otherTotal
 					)
 				)
 			),
